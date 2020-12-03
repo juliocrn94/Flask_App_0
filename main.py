@@ -8,12 +8,9 @@ from wtforms.validators import DataRequired
 
 import unittest
 
+from app import create_app
 
-app = Flask(__name__)
-bootstrap = Bootstrap(app)
-
-app.config['SECRET_KEY'] = 'SUPER SECRETO'
-
+app = create_app()
 
 to_dos = ['Comprar Cafe','Enviar Tarea','Hacer Reporte']
 
