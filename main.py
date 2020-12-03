@@ -24,7 +24,7 @@ class LoginForm(FlaskForm):
 
 @app.cli.command()
 def test():
-    tests = unittest.TestLoader().discover('test')
+    tests = unittest.TestLoader().discover('tests')
     unittest.TextTestRunner().run(tests)
 
 @app.errorhandler(404)
