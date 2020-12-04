@@ -8,20 +8,30 @@
 {% endblock %}
 
 {% block content %}
+    <div class="container">
+        {% if username %}
+            <h1>Bienvenido, {{username | capitalize}}</h1>
+        {% endif %}
 
-    {% if username %}
-        <h1>Bienvenido, {{username | capitalize}}</h1>
-    {% endif %}
+        {% if user_ip %}
+            <h3>Tu IP es {{ user_ip }}</h3>
+        {% else %}
+            <a href="{{ url_for('index') }}">Ir a Inicio</a>
+        {% endif %}
+    </div>
 
-    {% if user_ip %}
-        <h3>Tu IP es {{ user_ip }}</h3>
-    {% else %}
-        <a href="{{ url_for('index') }}">Ir a Inicio</a>
-    {% endif %}
-
-    <ul>
-        {% for to_do in to_dos %}
-            {{ macros.render_to_do(to_do) }}
-        {% endfor %}
-    </ul>
+    <div class="container">
+        <h2>Crea una nueva tarea</h2>
+        {{ wtf.quick_form(todo_form)}}
+    </div>
+    <div class="container">
+        <h2>
+            Tareas
+        </h2>
+        <ul>
+            {% for to_do in to_dos %}
+                {{ macros.render_to_do(to_do) }}
+            {% endfor %}
+        </ul>
+    </div>
 {% endblock %}

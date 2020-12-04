@@ -1,3 +1,7 @@
 {% macro render_to_do(to_do) %}
-    <li>Descripción: {{ to_do.to_dict()['desc'] }}</li>
+    <h4>
+        <li>
+                {{ to_do.to_dict()['desc'] }}
+        </li>
+    </h4>
 {% endmacro %}
