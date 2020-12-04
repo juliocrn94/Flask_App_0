@@ -1,7 +1,15 @@
-{% macro render_to_do(to_do) %}
+{% macro render_to_do(to_do, delete_form) %}
+{% import 'bootstrap/wtf.html' as wtf %}
+
     <h4>
-        <li>
-                {{ to_do.to_dict()['desc'] }}
+        <li class="list-group-item">
+            {{ to_do.to_dict()['desc'] }}
+            <span class="badge badge-primary badge-pill">
+                {{ to_do.to_dict()['done'] }}
+            </span>
+
+            {{ wtf.quick_form(delete_form, action=url_for('delete', todo_id=to_do.id)) }}
         </li>
     </h4>
+    
 {% endmacro %}
