@@ -8,7 +8,11 @@
 
 {% block content %}
     <div class="container">
-        {{ wtf.quick_form(login_form) }}
-        {{ wtf.quick_form(signup_form) }}
+        <div class="row">
+                {{ wtf.quick_form(login_form) }}
+        </div>
+        <div class="row">
+            {{ wtf.quick_form(signup_form) }}
+        </div>
     </div>
 {% endblock %}
