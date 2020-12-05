@@ -1,4 +1,4 @@
-{% macro render_to_do(to_do, delete_form) %}
+{% macro render_to_do(to_do, delete_form, update_form) %}
 {% import 'bootstrap/wtf.html' as wtf %}
 
     <h4>
@@ -9,6 +9,7 @@
             </span>
 
             {{ wtf.quick_form(delete_form, action=url_for('delete', todo_id=to_do.id)) }}
+            {{ wtf.quick_form(update_form, action=url_for('update', todo_id=to_do.id, done=to_do.to_dict().done)) }}
         </li>
     </h4>
     
