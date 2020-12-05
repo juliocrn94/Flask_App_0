@@ -16,3 +16,6 @@ class DeleteTodoForm(FlaskForm):
 
 class UpdateTodoForm(FlaskForm):
     submit = SubmitField('Actualiza')
+
+class SignUpForm(FlaskForm):
+    submit = SubmitField('Crear Cuenta')

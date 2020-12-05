@@ -3,7 +3,7 @@ from flask_login import login_user, login_required, logout_user
 
 from werkzeug.security import generate_password_hash, check_password_hash
 
-from app.forms import LoginForm
+from app.forms import LoginForm, SignUpForm
 from . import auth
 from app.firestore_service import get_user, user_put
 from app.models import UserModel, UserData
@@ -11,9 +11,14 @@ from app.models import UserModel, UserData
 @auth.route('/login', methods=['GET','POST'])
 def login():
     login_form = LoginForm()
+    signup_form = SignUpForm()
     context = {
-        'login_form': login_form
+        'login_form': login_form,
+        'signup_form': signup_form
     }
+
+    if signup_form.validate_on_submit():
+        return redirect(url_for('auth.signup'))
 
     if login_form.validate_on_submit():
         username = login_form.username.data
